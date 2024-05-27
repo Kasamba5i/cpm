@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Marcel Kasamba Senki">
+    <title>CheckPoint Manager 1.0 - Camion</title>
+    <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/monstyle1.css">
+
+    
+
+    <!-- Bootstrap core CSS -->
+<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="form-validation.css" rel="stylesheet">
+  </head>
+  <body class="bg-light">
+    
+<div class="container">
+  <main>
+    <div class="py-5 text-center">
+      <img class="d-block mx-auto mb-4" src="logo/logoKME.jpg" alt="" width="144" height="114">
+      <h2>CheckPoint Manager</h2>
+      <p class="lead">Ajouter des nouveaux utilisateurs</p>
+    </div>
+
+    <div class="row g-5">
+      <div class="col-md-5 col-lg-6 order-md-last">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-primary">Liste d'utilisateurs</span>
+          <span class="badge bg-primary rounded-pill" id="nombreutilisateurs">0</span>
+        </h4>
+        <form class="card p-2">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="KASAMBA LOMA JOEL">
+            <button type="submit" class="btn btn-secondary">Rechercher</button>
+          </div>
+        </form>
+        <ul class="list-group mb-6">
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+              <h6 class="my-0" id="nomutilisateur">KASAMBA LOMA JOEL</h6>
+              <small class="text-muted" id="contact">+243 994 152 488</small>
+              <br>
+              <small class="text-muted" id="trajet">info@cpm.com</small>
+              <br>
+              <small class="text-muted" id="dernierCheckPoint">Superviseur</small>
+            </div>
+            <span class="text-muted">
+              <img class="d-block mx-auto mb-4 rounded-circle" src="images/mks.jpg" alt="" width="72" height="57">
+            </span>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-7 col-lg-6">
+        <!--<h4 class="mb-3">Information du nouvel utilisateur</h4>-->
+        <form class="needs-validation" novalidate>
+
+          <h6 class="etiquette">Identité utilisateur</h6>
+
+          <div class="row g-3">
+            <div class="col-sm-12">
+              <div class="input-group">
+                <span class="input-group-text">Nom complet</span>
+              <input type="text" class="form-control" id="txtnomutilisateur" placeholder="KASAMBA LOMA JOEL" value="" required>
+              </div>
+              <div class="invalid-feedback">
+                Saisir un nom complet valide.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="input-group">
+                <span class="input-group-text">Adresse email</span>
+              <input type="email" class="form-control" id="txtemailutilisateur" placeholder="marcelkasamba@gmail.com" required>
+              </div>
+              <div class="invalid-feedback">
+                Saisir une adresse mail valide.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="input-group">
+                <span class="input-group-text">Téléphone</span>
+                <input type="tel" class="form-control" id="txtcontactutilisateur" placeholder="+243 000 000 000" required>
+              </div>
+              <div class="invalid-feedback">
+                Saisir un numéro de téléphone valide.
+              </div>
+            </div>
+            
+            <div class="col-12">
+              <div class="input-group">
+                <span class="input-group-text">Affecté à </span>
+                <select class="form-select" id="country" required>
+                  <option value="">Sakania</option>
+                  <option>Entrée Import</option>
+                  <option>Sortie Import</option>
+                  <option>Whisky</option>
+                  <option>Kanyaka</option>
+                  <option>Mokambo</option>
+                </select>
+              </div>
+              <div class="invalid-feedback">
+                Selectionner un checkpoint valide.
+              </div>
+            </div>
+            
+          <div class="col-12">
+            <div class="input-group">
+              <input type="file" class="form-control" id="inputGroupFile02">
+            </div>
+          </div>
+            
+          <h6 class="etiquette">Compte utilisateur</h6>
+
+          <div class="col-12">
+            <div class="input-group">
+              <span class="input-group-text">Type de compte </span>
+              <select class="form-select" id="type_de_compte" required>
+                <option value="">Administrateur</option>
+                <option>Superviseur</option>
+              </select>
+            </div>
+            <div class="invalid-feedback">
+              Selectionner un checkpoint valide.
+            </div>
+          </div>
+          
+          <div class="col-sm-12">
+            <div class="input-group">
+              <span class="input-group-text">Mot de passe</span>
+            <input type="text" class="form-control" id="txtmdputilisateur1" placeholder="********" value="" required>
+            </div>
+            <div class="invalid-feedback">
+              Saisir un mot de passe valide.
+            </div>
+          </div>
+
+          <div class="col-sm-12">
+            <div class="input-group">
+              <span class="input-group-text">Confirmer le mot de passe</span>
+            <input type="text" class="form-control" id="txtmdputilisateur2" placeholder="********" value="" required>
+            </div>
+            <div class="invalid-feedback">
+              Saisir un mot de passe valide.
+            </div>
+          </div>
+
+          </div>
+
+          <hr class="my-4">
+
+          <button class="w-100 btn btn-primary btn-lg" type="submit">Enregistrer</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">&copy; CheckPoint Manager 2024</p>
+    <ul class="list-inline">
+      <li class="list-inline-item"><a href="https://github.com/Kasamba5i">Developpeur</a></li>
+    </ul>
+  </footer>
+</div>
+
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="form-validation.js"></script>
+  </body>
+</html>
