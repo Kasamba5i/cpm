@@ -4,3 +4,8 @@
     padding-bottom: 5px;
 }
 */
+
+#logoKME{
+    background-image: url("logo/logoKME.jpg");
+    background-attachment: scroll;
+}
