@@ -5,7 +5,8 @@
 }
 */
 
-#logoKME{
-    background-image: url("logo/logoKME.jpg");
-    background-attachment: scroll;
+#logoKME {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
 }
