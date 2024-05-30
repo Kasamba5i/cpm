@@ -1,6 +1,9 @@
-* {
+/*
+*{
     font-family: "Audiowide", "Sofia", sans-serif;
+    //fonts à utiliser pour les notes (notifications), avertissements
 }
+*/
 
 #logoKME {
     width: 50px;
