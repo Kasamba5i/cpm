@@ -1,216 +1,159 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="author" content="Marcel Kasamba Senki">
-    <title>CheckPoint Manager 1.0 - Camion</title>
-    <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles/monstyle1.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
 
-    
+    <title>Offcanvas template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-
-    
     <!-- Custom styles for this template -->
-    <link href="form-validation.css" rel="stylesheet">
+    <link href="offcanvas.css" rel="stylesheet">
   </head>
+
   <body class="bg-light">
-    
-<div class="container">
-  <main>
-    <nav class="navbar navbar-dark bg-dark fixed-top">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-          <img src="logo/logoKME.jpg" alt="" id="logoKME">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Dark offcanvas</h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-          </div>
-          <div class="offcanvas-body">
-            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown
-                </a>
-                <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li>
-                    <hr class="dropdown-divider">
-                  </li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </li>
-            </ul>
-            <form class="d-flex mt-3" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-success" type="submit">Search</button>
-            </form>
-          </div>
-        </div>
+
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+      <a class="navbar-brand mr-auto mr-lg-0" href="#">Offcanvas navbar</a>
+      <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Dashboard <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Notifications</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Switch account</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
       </div>
     </nav>
 
-    <div class="fondTransport"></div>
-    
-    <div class="py-5 text-center">
-      <!--
-      <img class="d-block mx-auto mb-4" src="logo/logoKME.jpg" alt="" width="144" height="114">
-      <h2>CheckPoint Manager</h2>
-      -->
-      <p class="lead">Ajouter des nouveaux utilisateurs</p>
+    <div class="nav-scroller bg-white shadow-sm">
+      <nav class="nav nav-underline">
+        <a class="nav-link active" href="#">Dashboard</a>
+        <a class="nav-link" href="#">
+          Friends
+          <span class="badge badge-pill bg-light align-text-bottom">27</span>
+        </a>
+        <a class="nav-link" href="#">Explore</a>
+        <a class="nav-link" href="#">Suggestions</a>
+        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="#">Link</a>
+      </nav>
     </div>
 
-    <div class="row g-5">
-      <div class="col-md-12 col-lg-12">
-        <!--<h4 class="mb-3">Information du nouvel utilisateur</h4>-->
-        <form class="needs-validation" novalidate>
-
-          <h3 class="etiquette">Identité utilisateur</h3>
-
-          <div class="row g-3">
-            <div class="col-sm-12">
-              <div class="input-group">
-                <span class="input-group-text">Nom complet</span>
-              <input type="text" class="form-control" id="txtnomutilisateur" placeholder="KASAMBA LOMA JOEL" value="" required>
-              </div>
-              <div class="invalid-feedback">
-                Saisir un nom complet valide.
-              </div>
-            </div>
-
-            <div class="col-12">
-              <div class="input-group">
-                <span class="input-group-text">Adresse email</span>
-              <input type="email" class="form-control" id="txtemailutilisateur" placeholder="marcelkasamba@gmail.com" required>
-              </div>
-              <div class="invalid-feedback">
-                Saisir une adresse mail valide.
-              </div>
-            </div>
-
-            <div class="col-12">
-              <div class="input-group">
-                <span class="input-group-text">Téléphone</span>
-                <input type="tel" class="form-control" id="txtcontactutilisateur" placeholder="+243 000 000 000" required>
-              </div>
-              <div class="invalid-feedback">
-                Saisir un numéro de téléphone valide.
-              </div>
-            </div>
-            
-            <div class="col-12">
-              <div class="input-group">
-                <span class="input-group-text">Affecté à </span>
-                <select class="form-select" id="country" required>
-                  <option value="">Sakania</option>
-                  <option>Entrée Import</option>
-                  <option>Sortie Import</option>
-                  <option>Whisky</option>
-                  <option>Kanyaka</option>
-                  <option>Mokambo</option>
-                </select>
-              </div>
-              <div class="invalid-feedback">
-                Selectionner un checkpoint valide.
-              </div>
-            </div>
-            
-          <div class="col-12">
-            <div class="input-group">
-              <input type="file" class="form-control" id="inputGroupFile02">
-            </div>
-          </div>
-            
-          <h3 class="etiquette">Compte utilisateur</h3>
-
-          <div class="col-12">
-            <div class="input-group">
-              <span class="input-group-text">Type de compte </span>
-              <select class="form-select" id="type_de_compte" required>
-                <option value="">Administrateur</option>
-                <option>Superviseur</option>
-              </select>
-            </div>
-            <div class="invalid-feedback">
-              Selectionner un checkpoint valide.
-            </div>
-          </div>
-          
-          <div class="col-sm-12">
-            <div class="input-group">
-              <span class="input-group-text">Mot de passe</span>
-            <input type="text" class="form-control" id="txtmdputilisateur1" placeholder="********" value="" required>
-            </div>
-            <div class="invalid-feedback">
-              Saisir un mot de passe valide.
-            </div>
-          </div>
-
-          <div class="col-sm-12">
-            <div class="input-group">
-              <span class="input-group-text">Confirmer le mot de passe</span>
-            <input type="text" class="form-control" id="txtmdputilisateur2" placeholder="********" value="" required>
-            </div>
-            <div class="invalid-feedback">
-              Saisir un mot de passe valide.
-            </div>
-          </div>
-
-          </div>
-
-          <hr class="my-4">
-          <div class="d-grid gap-2 col-6 mx-auto">
-            <button class="w-100 btn btn-primary btn-lg" type="submit">Enregistrer</button>
-          </div>
-        </form>
+    <main role="main" class="container">
+      <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded shadow-sm">
+        <img class="mr-3" src="../../assets/brand/bootstrap-outline.svg" alt="" width="48" height="48">
+        <div class="lh-100">
+          <h6 class="mb-0 text-white lh-100">Bootstrap</h6>
+          <small>Since 2011</small>
+        </div>
       </div>
-    </div>
-  </main>
 
-  <footer class="my-5 pt-5 text-muted text-center text-small">
-    <p class="mb-1">&copy; CheckPoint Manager 2024</p>
-    <ul class="list-inline">
-      <li class="list-inline-item"><a href="https://github.com/Kasamba5i">Developpeur</a></li>
-    </ul>
-  </footer>
-</div>
+      <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <h6 class="border-bottom border-gray pb-2 mb-0">Recent updates</h6>
+        <div class="media text-muted pt-3">
+          <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
+          <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <strong class="d-block text-gray-dark">@username</strong>
+            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+          </p>
+        </div>
+        <div class="media text-muted pt-3">
+          <img data-src="holder.js/32x32?theme=thumb&bg=e83e8c&fg=e83e8c&size=1" alt="" class="mr-2 rounded">
+          <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <strong class="d-block text-gray-dark">@username</strong>
+            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+          </p>
+        </div>
+        <div class="media text-muted pt-3">
+          <img data-src="holder.js/32x32?theme=thumb&bg=6f42c1&fg=6f42c1&size=1" alt="" class="mr-2 rounded">
+          <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <strong class="d-block text-gray-dark">@username</strong>
+            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+          </p>
+        </div>
+        <small class="d-block text-right mt-3">
+          <a href="#">All updates</a>
+        </small>
+      </div>
 
+      <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <h6 class="border-bottom border-gray pb-2 mb-0">Suggestions</h6>
+        <div class="media text-muted pt-3">
+          <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
+          <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <div class="d-flex justify-content-between align-items-center w-100">
+              <strong class="text-gray-dark">Full Name</strong>
+              <a href="#">Follow</a>
+            </div>
+            <span class="d-block">@username</span>
+          </div>
+        </div>
+        <div class="media text-muted pt-3">
+          <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
+          <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <div class="d-flex justify-content-between align-items-center w-100">
+              <strong class="text-gray-dark">Full Name</strong>
+              <a href="#">Follow</a>
+            </div>
+            <span class="d-block">@username</span>
+          </div>
+        </div>
+        <div class="media text-muted pt-3">
+          <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
+          <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <div class="d-flex justify-content-between align-items-center w-100">
+              <strong class="text-gray-dark">Full Name</strong>
+              <a href="#">Follow</a>
+            </div>
+            <span class="d-block">@username</span>
+          </div>
+        </div>
+        <small class="d-block text-right mt-3">
+          <a href="#">All suggestions</a>
+        </small>
+      </div>
+    </main>
 
-    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
-
-    <script src="form-validation.js"></script>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/vendor/holder.min.js"></script>
+    <script src="offcanvas.js"></script>
   </body>
 </html>
