@@ -65,17 +65,17 @@
               </tr>
             </thead>
             <tbody id="majcontinuecamions">
-              <tr onclick="detailler();">
+              <tr class="ligne">
                 <td>5744AA 19</td>
                 <td>27/05/2024 05:30</td>
                 <td>Entrée Import</td>
               </tr>
-              <tr onclick="detailler();">
+              <tr class="ligne">
                 <td>5744AA 19</td>
                 <td>27/05/2024 05:30</td>
                 <td>Entrée Import</td>
               </tr>
-              <tr onclick="detailler();">
+              <tr class="ligne">
                 <td>5744AA 19</td>
                 <td>27/05/2024 05:30</td>
                 <td>Entrée Import</td>
@@ -144,14 +144,26 @@
       <dialog id="myModal" class="modal-content rounded-4 shadow">
         <div class="modal-header border-bottom-0">
           <h1 class="modal-title fs-5">Modal title</h1>
-          <button type="button" class="btn-close" aria-label="Close"></button>
+          <button type="button" id="fermerModal" class="btn-close" aria-label="Close"></button>
         </div>
         <div class="modal-body py-0">
-          <p>This is a modal sheet, a variation of the modal that docs itself to the bottom of the viewport like the newer share sheets in iOS.</p>
-        </div>
-        <div class="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
-          <button type="button" class="btn btn-lg btn-primary">Save changes</button>
-          <button type="button" class="btn btn-lg btn-secondary" data-bs-dismiss="modal">Close</button>
+          <table class="table table-responsive">
+            <tr>
+              <td>KASAMBA</td>
+              <td>SENKI</td>
+              <td>MARCEL</td>
+            </tr>
+            <tr>
+              <td>KASAMBA</td>
+              <td>SENKI</td>
+              <td>MARCEL</td>
+            </tr>
+            <tr>
+              <td>KASAMBA</td>
+              <td>SENKI</td>
+              <td>MARCEL</td>
+            </tr>
+          </table>
         </div>
       </dialog>
     </main>
@@ -175,8 +187,12 @@
     <script src="bootstrap-5.0.2-dist/js/boitemodale.js"></script>
     <!---->
     <script>
-      function detailler(){
+      document.getElementsByClassName("ligne").onclick = function(){
         document.getElementById("myModal").showModal();
+      }
+
+      document.getElementById("fermerModal").onclick = function(){
+        document.getElementById("myModal").close("myModal");
       }
     </script>
   </body>
