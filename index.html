@@ -65,17 +65,17 @@
               </tr>
             </thead>
             <tbody id="majcontinuecamions">
-              <tr>
+              <tr onclick="detailler();">
                 <td>5744AA 19</td>
                 <td>27/05/2024 05:30</td>
                 <td>Entrée Import</td>
               </tr>
-              <tr>
+              <tr onclick="detailler();">
                 <td>5744AA 19</td>
                 <td>27/05/2024 05:30</td>
                 <td>Entrée Import</td>
               </tr>
-              <tr>
+              <tr onclick="detailler();">
                 <td>5744AA 19</td>
                 <td>27/05/2024 05:30</td>
                 <td>Entrée Import</td>
@@ -141,10 +141,9 @@
         </small>
       </div>
       -->
-      <button type="button" class="btn btn-info btn-lg" data-toggle="dialog" data-target="#myModal">Open Modal</button>
-    
+      
       <!-- Modal -->
-      <div class="modal fade" id="myModal" role="dialog">
+      <dialog class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
         
           <!-- Modal content-->
@@ -162,7 +161,7 @@
           </div>
           
         </div>
-      </div>
+      </dialog>
     </main>
 
     <footer class="my-5 pt-5 text-muted text-center text-small">
@@ -182,5 +181,12 @@
     <script src="../../assets/js/vendor/holder.min.js"></script>
     <script src="styles/offcanvas.js"></script>
     <script src="bootstrap-5.0.2-dist/js/boitemodale.js"></script>
+    <!---->
+    <script>
+      const myModal = document.getElementById("myModal");
+      function detailler(){
+        myModal.showModal();
+      }
+    </script>
   </body>
 </html>
