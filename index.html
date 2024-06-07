@@ -142,12 +142,16 @@
       </div>
       -->
       <dialog id="myModal">
-        <div class="media text-muted pt-3">
-          <img data-src="holder.js/32x32?theme=thumb&bg=6f42c1&fg=6f42c1&size=1" alt="" class="mr-2 rounded">
-          <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-            <strong class="d-block text-gray-dark">@username</strong>
-            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-          </p>
+        <div class="modal-header border-bottom-0">
+          <h1 class="modal-title fs-5">Modal title</h1>
+          <button type="button" class="btn-close" aria-label="Close">&times;</button>
+        </div>
+        <div class="modal-body py-0">
+          <p>This is a modal sheet, a variation of the modal that docs itself to the bottom of the viewport like the newer share sheets in iOS.</p>
+        </div>
+        <div class="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
+          <button type="button" class="btn btn-lg btn-primary">Save changes</button>
+          <button type="button" class="btn btn-lg btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
       </dialog>
     </main>
