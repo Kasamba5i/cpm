@@ -3,7 +3,7 @@
     
     /* CODE DE CONNEXION A LA BASE DE DONNEES */
     function se_connecter(){
-        $conn = mysqli_connect("localhost","root","","db_cpm");
+        $conn = mysqli_connect("localhost","root","","db_cpm","3308");
         return $conn;
     }
 
@@ -40,7 +40,7 @@
     */
 
     function ajouter_camion(){
-        $retour = "";
+        $retour = 0;
         
         $plaque = $_REQUEST["plaque"];
         $chauffeur = $_REQUEST["chauffeur"];

@@ -155,7 +155,7 @@
         </div>
       </main>
 
-      <footer class="my-5 pt-5 text-muted text-center text-small">
+      <footer class="my-5 text-muted text-center text-small">
         <p class="mb-1">&copy; CheckPoint Manager 2024</p>
         <ul class="list-inline">
           <li class="list-inline-item"><a href="https://github.com/Kasamba5i">Developpeur</a></li>
@@ -227,6 +227,8 @@
         const parametres = "&plaque=" + plaque + "&chauffeur=" + chauffeur+"&capacite=" + capacite + "&contact=" + contact;
 
         xhttp.onload = function(){
+          alert(this.responseText);
+          /*
           if(this.responseText>0){
             afficher_tous_les_camions();
             compter_lignes();
@@ -234,6 +236,7 @@
           else{
             alert("Un souci s'est produit");
           }
+          */
         }
         xhttp.open("GET","serveurs/insertion.php?operation=" + operation + parametres);
         xhttp.send();

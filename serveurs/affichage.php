@@ -3,7 +3,7 @@
 
     /* CODE DE CONNEXION A LA BASE DE DONNEES */
     function se_connecter(){
-        $conn = mysqli_connect("localhost","root","","db_cpm");
+        $conn = mysqli_connect("127.0.0.1","root","","db_cpm","3308");
         return $conn;
     }
 
@@ -18,9 +18,9 @@
             $retour = $retour . '<li class="list-group-item d-flex justify-content-between lh-sm">
                 <div>
                     <h6 class="my-0" id="plaqueimmatriculation">' . $row["plaque"] . '</h6>
-                    <small class="text-muted" id="contact">' . $row["contact"] . '</small>
+                    <small class="text-muted" id="contact">+' . $row["contact"] . '</small>
                     <br>
-                    <small class="text-muted" id="capactite">' . $row["capacite"] . '</small>
+                    <small class="text-muted" id="capactite">' . $row["capacite"] . ' tone(s)</small>
                     <br>
                     <small class="text-muted" id="nomchauffeur">' . $row["chauffeur"] . '</small>
                 </div>
