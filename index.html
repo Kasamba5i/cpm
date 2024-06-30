@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="author" content="Marcel Kasamba Senki">
-    <title>CheckPoint Manager 1.0 - Camion</title>
+    <title>CheckPoint Manager 1.0 - Utilisateur</title>
     <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles/monstyle1.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
@@ -34,7 +34,7 @@
     <!-- Custom styles for this template -->
     <link href="form-validation.css" rel="stylesheet">
   </head>
-  <body class="bg-light" onload="afficher_tous_les_camions();">
+  <body class="bg-light" onload="afficher_tous_les_utilisateurs();">
     
     <div class="container">
       <main>
@@ -83,73 +83,113 @@
         </nav>
 
         <div class="py-5 text-center">
-          <p class="lead">Ajouter des nouveaux camions</p>
+          <p class="lead">Ajouter des nouveaux utilisateurs</p>
         </div>
 
         <div class="row g-5">
           <div class="col-md-5 col-lg-6 order-md-last">
             <h4 class="d-flex justify-content-between align-items-center mb-3">
-              <span class="text-primary">Liste camions</span>
-              <span class="badge bg-primary rounded-pill" id="nombreCamions"></span>
+              <span class="text-primary">Liste d'utilisateurs</span>
+              <span class="badge bg-primary rounded-pill" id="nombreutilisateurs"></span>
             </h4>
             <form class="card p-2">
               <div class="input-group">
-                <input type="text" class="form-control" placeholder="5744AA 19" oninput="filtrer_les_camions(this.value);">
+                <input type="text" class="form-control" placeholder="KASAMBA LOMA JOEL" oninput="filtrer_les_utilisateurs(this.value);">
                 <button type="submit" class="btn btn-secondary">Rechercher</button>
               </div>
             </form>
-            <ul class="list-group mb-6" id="liste_camions"></ul>
+            <ul class="list-group mb-6" id="liste_utilisateurs"></ul>
           </div>
           <div class="col-md-7 col-lg-6">
             
-            <form class="needs-validation" novalidate>
-              <h5 class="etiquette">Information du nouveau camion</h5>
+            <form class="needs-validation" enctype="multipart/form-data" id="form_utilisateur" novalidate>
+              <h5 class="etiquette">Information du nouvel utilisateur</h5>
               <div class="row g-3">
                 <div class="col-sm-12">
                   <div class="input-group">
-                    <span class="input-group-text">Plaque d'immatriculation</span>
-                    <input type="text" class="form-control" id="txtplaqueimmatriculation" placeholder="5744AA 19" value="" required>
+                    <span class="input-group-text">Nom complet</span>
+                  <input type="text" class="form-control" id="txtnomutilisateur" placeholder="KASAMBA LOMA JOEL" value="" required>
                   </div>
                   <div class="invalid-feedback">
-                    Saisir une immatriculation valide.
-                  </div>
-                </div>
-
-                <div class="col-sm-12">
-                  <div class="input-group">
-                    <span class="input-group-text">Nom du chauffeur</span>
-                    <input type="text" class="form-control" id="txtnomduchauffeur" placeholder="FELIX KASONGO" value="" required>
-                  </div>
-                  <div class="invalid-feedback">
-                    Saisir un nom valide.
-                  </div>
-                </div>
-
-                <div class="col-12">
-                  <div class="input-group has-validation">
-                    <span class="input-group-text">Capacité</span>
-                    <input type="number" class="form-control" id="txtcapacitecamion" min="1" required>
-                    <span class="input-group-text">Tone(s)</span>
-                  <div class="invalid-feedback">
-                      Saisir un tonnage valide.
-                    </div>
+                    Saisir un nom complet valide.
                   </div>
                 </div>
 
                 <div class="col-12">
                   <div class="input-group">
-                    <span class="input-group-text">Contact</span>
-                    <input type="tel" class="form-control" id="txtcontactcamion" required>
+                    <span class="input-group-text">Adresse email</span>
+                  <input type="email" class="form-control" id="txtemailutilisateur" placeholder="marcelkasamba@gmail.com" required>
                   </div>
                   <div class="invalid-feedback">
-                    Saisir un numéro valide.
+                    Saisir une adresse mail valide.
                   </div>
                 </div>
+
+                <div class="col-12">
+                  <div class="input-group">
+                    <span class="input-group-text">Téléphone</span>
+                    <input type="tel" class="form-control" id="txtcontactutilisateur" placeholder="+243 000 000 000" required>
+                  </div>
+                  <div class="invalid-feedback">
+                    Saisir un numéro de téléphone valide.
+                  </div>
+                </div>
+                
+                <div class="col-12">
+                  <div class="input-group">
+                    <span class="input-group-text">Affecté à </span>
+                    <select class="form-select" id="l_checkpoint" required></select>
+                  </div>
+                  <div class="invalid-feedback">
+                    Selectionner un checkpoint valide.
+                  </div>
+                </div>
+                
+              <div class="col-12">
+                <div class="input-group">
+                  <input type="file" class="form-control" id="f_photo" name="f_photo" accept="image/jpeg, image/png, image/jpg">
+                </div>
+              </div>
+                
+              <h3 class="etiquette">Compte utilisateur</h3>
+
+              <div class="col-12">
+                <div class="input-group">
+                  <span class="input-group-text">Type de compte </span>
+                  <select class="form-select" id="type_de_compte" required>
+                    <option value="adm">Administrateur</option>
+                    <option value="sup">Superviseur</option>
+                  </select>
+                </div>
+                <div class="invalid-feedback">
+                  Selectionner un checkpoint valide.
+                </div>
+              </div>
+              
+              <div class="col-sm-12">
+                <div class="input-group">
+                  <span class="input-group-text">Mot de passe</span>
+                  <input type="text" class="form-control" id="txtmdputilisateur1" placeholder="********" value="" required>
+                </div>
+                <div class="invalid-feedback">
+                  Saisir un mot de passe valide.
+                </div>
+              </div>
+
+              <div class="col-sm-12">
+                <div class="input-group">
+                  <span class="input-group-text">Confirmer le mot de passe</span>
+                <input type="text" class="form-control" id="txtmdputilisateur2" placeholder="********" value="" required>
+                </div>
+                <div class="invalid-feedback">
+                  Saisir un mot de passe valide.
+                </div>
+              </div>
               </div>
 
               <hr class="my-4">
 
-              <button class="w-100 btn btn-primary btn-lg" type="button" onclick="ajouter_camion();">Enregistrer</button>
+              <button class="w-100 btn btn-primary btn-lg" type="button" onclick="ajouter_un_utilisateur();">Enregistrer</button>
             </form>
           </div>
         </div>
@@ -171,12 +211,18 @@
       let operation = "";
       const xhttp = new XMLHttpRequest();
 
-      /*AFFICHER TOUS LES CAMIONS*/
-      function afficher_tous_les_camions(){
-        operation = "afficher_tous_les_camions";
+      /* RAZ CHAMPS */
+      function raz_champs(){
+        document.getElementById("txtnomutilisateur").value = "";
+        document.getElementById("txtlocalisation").value = "";
+      }
+
+      /*AFFICHER TOUS LES CHECKPOINTS*/
+      function afficher_tous_les_utilisateurs(){
+        operation = "afficher_tous_les_utilisateurs";
 
         xhttp.onload = function(){
-          document.getElementById("liste_camions").innerHTML = this.responseText;
+          document.getElementById("liste_utilisateurs").innerHTML = this.responseText;
           compter_lignes();
         }
 
@@ -184,99 +230,134 @@
         xhttp.send();
       }
       
-      /*AFFICHER LES CAMIONS DONT LA PLAQUE COMMENCE PAR*/
-      function filtrer_les_camions(plaque){
-        if (plaque!=0) {//Se rassure que le champs numéro plaque n'est pas constitué que d'espaces
-          operation = "filtrer_les_camions";
+      /*AFFICHER LES CHECKPOINTS DONT LA NOM COMMENCE PAR*/
+      function filtrer_les_utilisateurs(nom){
+        if (nom!=0) {//Se rassure que le champs nom n'est pas constitué que d'espaces
+          operation = "filtrer_les_utilisateurs";
+          const parametres = "&nom=" + nom;
 
           xhttp.onload = function(){
-            document.getElementById("liste_camions").innerHTML = this.responseText;
+            document.getElementById("liste_utilisateurs").innerHTML = this.responseText;
           }
 
-          xhttp.open("GET","serveurs/affichage.php?operation=" + operation + "&plaque=" + plaque);
+          xhttp.open("REQUEST","serveurs/affichage.php?operation=" + operation + parametres);
           xhttp.send();
         }
-        else {//Lorsque le champs numéro plaque n'est pas constitué que d'espaces ou est vide
-          afficher_tous_les_camions();
+        else {//Lorsque le champs nom n'est pas constitué que d'espaces ou est vide
+          afficher_tous_les_utilisateurs();
         }
       }
       
-      /*COMPTER LE NOMBRE TOTAL DE CAMIONS*/
-      function compter_lignes(){
-        operation = "compter_lignes";
-        const parametres = "&table=t_camion";
+      /*LISTER LES CHECKPOINTS*/
+      function lister_les_checkpoints(){
+        operation = "lister_les_checkpoints";
 
         xhttp.onload = function(){
-          document.getElementById("nombreCamions").innerHTML = this.responseText;
+          //alert(this.responseText);
+          document.getElementById("l_checkpoint").innerHTML = this.responseText;
         }
 
-        xhttp.open("GET","serveurs/affichage.php?operation=" + operation + parametres);
+        xhttp.open("REQUEST","serveurs/affichage.php?operation=" + operation);
         xhttp.send();
       }
       
-      /*AJOUTER UN CAMION*/
-      function ajouter_camion(){
-        operation = "ajouter_camion";
-        const plaque = document.getElementById("txtplaqueimmatriculation").value;
-        const chauffeur = document.getElementById("txtnomduchauffeur").value;
-        const capacite = document.getElementById("txtcapacitecamion").value;
-        const contact = document.getElementById("txtcontactcamion").value;
+      /*COMPTER LE NOMBRE TOTAL DE CHECKPOINTS*/
+      function compter_lignes(){
+        operation = "compter_lignes";
+        const parametres = "&table=t_utilisateur";
+
+        xhttp.onload = function(){
+          document.getElementById("nombreutilisateurs").innerHTML = this.responseText;
+        }
+
+        xhttp.open("REQUEST","serveurs/affichage.php?operation=" + operation + parametres);
+        xhttp.send();
+      }
+      
+      /* INSERTION */
+      /*AJOUTER UN CHECKPOINT*/
+      function ajouter_un_utilisateur(){
+        const nom = document.getElementById("txtnomutilisateur").value;
+        const email = document.getElementById("txtemailutilisateur").value;
+        const contact = document.getElementById("txtcontactutilisateur").value;
+        const idcheckpoint = document.getElementById("l_checkpoint").value;
+        var photo = new FormData(document.getElementById("form_utilisateur"));
+        const type_de_compte = document.getElementById("type_de_compte").value;
 
         //test//
 
-        const parametres = "&plaque=" + plaque + "&chauffeur=" + chauffeur+"&capacite=" + capacite + "&contact=" + contact;
+        if (document.getElementById("txtmdputilisateur1").value==document.getElementById("txtmdputilisateur2").value) {
+          const motdepasse = document.getElementById("txtmdputilisateur1").value;
 
-        xhttp.onload = function(){
-          alert(this.responseText);
-          /*
-          if(this.responseText>0){
-            afficher_tous_les_camions();
-            compter_lignes();
-          }
-          else{
-            alert("Un souci s'est produit");
-          }
-          */
-        }
-        xhttp.open("GET","serveurs/insertion.php?operation=" + operation + parametres);
-        xhttp.send();
+          /*SAUVEGARDE PHYSIQUE DE LA PHOTO*/
+          fetch("serveurs/upload_photo.php", { method: "POST", body: photo })
+          .then(res => res.text())
+          .then(txt => {
+            if(txt.split(':')[0]==1){
+              const parametres = "&nom=" + nom + "&email=" + email + "&contact=" + contact + "&idcheckpoint=" + idcheckpoint + "&cheminphoto=" + txt.split(':')[1] + "&type_de_compte=" + type_de_compte + "&motdepasse=" + motdepasse;
+              operation = "ajouter_un_utilisateur";
+              //alert(parametres);
+              xhttp.onload = function(){
+                //alert(this.responseText);
+                
+                if(this.responseText>0){
+                  alert("OKKKK");
+                  //raz_champs();
+                  //afficher_tous_les_utilisateurs();
+                }
+                else{
+                  alert("L'utilisateur n'a pas été enregistré !");
+                }
+              }
+              xhttp.open("REQUEST","serveurs/insertion.php?operation=" + operation + parametres);
+              xhttp.send();
+            }
+            else{
+              alert("La photo de l'utilisateur n'a pas été sauvegardée !");
+            }
+          })
+          .catch(err => console.error(err));
+        } else {}
       }
 
-      
-      /*SUPPRIMER UN CAMION*/
-      /*
-      function supprimer_camion(id){
-        operation = "supprimer_camion";
+      /* SUPPRESSION */
+      /*SUPPRIMER UN CHECKPOINT*/
+      function supprimer_un_checkpoint(idcheckpoint){
+        operation = "supprimer_un_checkpoint";
+        const parametres = "&idcheckpoint=" + idcheckpoint;
+        
         xhttp.onload = function(){
+          //alert(this.responseText);
           if(this.responseText>0){
-            afficher_tous_les_camions();
+            afficher_tous_les_utilisateurs();
           }
           else{
             alert("Un souci s'est produit");
           }
         }
         
-        xhttp.open("GET","serveur_suppression_ligne.php?operation=" + operation + "&id=" + id);
+        xhttp.open("REQUEST","serveurs/suppression.php?operation=" + operation + parametres);
         xhttp.send();
       }
-      */
-      /*SUPPRIMER TOUS LES CAMIONS*/
-      /*
-      function supprimer_camion(id){
-        operation = "supprimer_camion";
+      /*SUPPRIMER TOUS LES CHECKPOINTS*/
+      function supprimer_tous_les_checkpoints(){
+        operation = "supprimer_tous_les_checkpoints";
         xhttp.onload = function(){
           if(this.responseText>0){
-            afficher_tous_les_camions();
+            afficher_tous_les_utilisateurs();
           }
           else{
             alert("Un souci s'est produit");
           }
         }
         
-        xhttp.open("GET","serveur_suppression_ligne.php?operation=" + operation + "&id=" + id);
+        xhttp.open("REQUEST","serveurs/suppression.php?operation=" + operation);
         xhttp.send();
       }
-      */
+
+      window.onload = function(){
+        lister_les_checkpoints();
+      }
     </script>
   </body>
 </html>

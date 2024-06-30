@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Marcel Kasamba Senki">
+    <title>CheckPoint Manager 1.0 - Camion</title>
+    <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/monstyle1.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="styles/offcanvas.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+
+    <!-- Custom styles for this template -->
+    <link href="form-validation.css" rel="stylesheet">
+  </head>
+  <body class="bg-light" onload="afficher_tous_les_camions();">
+    
+    <div class="container">
+      <main>
+        <nav class="navbar navbar-dark bg-dark fixed-top">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+              <img src="logo/logoKME.jpg" alt="" id="logoKME">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+              <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Dark offcanvas</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              </div>
+              <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Dropdown
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li>
+                        <hr class="dropdown-divider">
+                      </li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                  </li>
+                </ul>
+                <form class="d-flex mt-3" role="search">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-success" type="submit">Search</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <div class="py-5 text-center">
+          <p class="lead">Ajouter des nouveaux camions</p>
+        </div>
+
+        <div class="row g-5">
+          <div class="col-md-5 col-lg-6 order-md-last">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+              <span class="text-primary">Liste camions</span>
+              <span class="badge bg-primary rounded-pill" id="nombreCamions"></span>
+            </h4>
+            <form class="card p-2">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="5744AA 19" oninput="filtrer_les_camions(this.value);">
+                <button type="submit" class="btn btn-secondary">Rechercher</button>
+              </div>
+            </form>
+            <ul class="list-group mb-6" id="liste_camions"></ul>
+          </div>
+          <div class="col-md-7 col-lg-6">
+            
+            <form class="needs-validation" novalidate>
+              <h5 class="etiquette">Information du nouveau camion</h5>
+              <div class="row g-3">
+                <div class="col-sm-12">
+                  <div class="input-group">
+                    <span class="input-group-text">Plaque d'immatriculation</span>
+                    <input type="text" class="form-control" id="txtplaqueimmatriculation" placeholder="5744AA 19" value="" required>
+                  </div>
+                  <div class="invalid-feedback">
+                    Saisir une immatriculation valide.
+                  </div>
+                </div>
+
+                <div class="col-sm-12">
+                  <div class="input-group">
+                    <span class="input-group-text">Nom du chauffeur</span>
+                    <input type="text" class="form-control" id="txtnomduchauffeur" placeholder="FELIX KASONGO" value="" required>
+                  </div>
+                  <div class="invalid-feedback">
+                    Saisir un nom valide.
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="input-group has-validation">
+                    <span class="input-group-text">Capacité</span>
+                    <input type="number" class="form-control" id="txtcapacitecamion" min="1" required>
+                    <span class="input-group-text">Tone(s)</span>
+                  <div class="invalid-feedback">
+                      Saisir un tonnage valide.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="input-group">
+                    <span class="input-group-text">Contact</span>
+                    <input type="tel" class="form-control" id="txtcontactcamion" required>
+                  </div>
+                  <div class="invalid-feedback">
+                    Saisir un numéro valide.
+                  </div>
+                </div>
+              </div>
+
+              <hr class="my-4">
+
+              <button class="w-100 btn btn-primary btn-lg" type="button" onclick="ajouter_camion();">Enregistrer</button>
+            </form>
+          </div>
+        </div>
+      </main>
+
+      <footer class="my-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; CheckPoint Manager 2024</p>
+        <ul class="list-inline">
+          <li class="list-inline-item"><a href="https://github.com/Kasamba5i">Developpeur</a></li>
+        </ul>
+      </footer>
+    </div>
+
+    <script src="bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="styles/offcanvas.js"></script>
+    <script src="form-validation.js"></script>
+
+    <script type="text/javascript">
+      let operation = "";
+      const xhttp = new XMLHttpRequest();
+
+      /*AFFICHER TOUS LES CAMIONS*/
+      function afficher_tous_les_camions(){
+        operation = "afficher_tous_les_camions";
+
+        xhttp.onload = function(){
+          document.getElementById("liste_camions").innerHTML = this.responseText;
+          compter_lignes();
+        }
+
+        xhttp.open("REQUEST","serveurs/affichage.php?operation=" + operation);
+        xhttp.send();
+      }
+      
+      /*AFFICHER LES CAMIONS DONT LA PLAQUE COMMENCE PAR*/
+      function filtrer_les_camions(plaque){
+        if (plaque!=0) {//Se rassure que le champs numéro plaque n'est pas constitué que d'espaces
+          operation = "filtrer_les_camions";
+
+          xhttp.onload = function(){
+            document.getElementById("liste_camions").innerHTML = this.responseText;
+          }
+
+          xhttp.open("GET","serveurs/affichage.php?operation=" + operation + "&plaque=" + plaque);
+          xhttp.send();
+        }
+        else {//Lorsque le champs numéro plaque n'est pas constitué que d'espaces ou est vide
+          afficher_tous_les_camions();
+        }
+      }
+      
+      /*COMPTER LE NOMBRE TOTAL DE CAMIONS*/
+      function compter_lignes(){
+        operation = "compter_lignes";
+        const parametres = "&table=t_camion";
+
+        xhttp.onload = function(){
+          document.getElementById("nombreCamions").innerHTML = this.responseText;
+        }
+
+        xhttp.open("GET","serveurs/affichage.php?operation=" + operation + parametres);
+        xhttp.send();
+      }
+      
+      /* INSERTION */
+      /*AJOUTER UN CAMION*/
+      function ajouter_camion(){
+        operation = "ajouter_camion";
+        const plaque = document.getElementById("txtplaqueimmatriculation").value;
+        const chauffeur = document.getElementById("txtnomduchauffeur").value;
+        const capacite = document.getElementById("txtcapacitecamion").value;
+        const contact = document.getElementById("txtcontactcamion").value;
+
+        //test//
+
+        const parametres = "&plaque=" + plaque + "&chauffeur=" + chauffeur+"&capacite=" + capacite + "&contact=" + contact;
+
+        xhttp.onload = function(){
+          //alert(this.responseText);
+          if(this.responseText>0){
+            afficher_tous_les_camions();
+          }
+          else{
+            alert("Un souci s'est produit");
+          }
+        }
+        xhttp.open("GET","serveurs/insertion.php?operation=" + operation + parametres);
+        xhttp.send();
+      }
+
+      /* SUPPRESSION */
+      /*SUPPRIMER UN CAMION*/
+      function supprimer_un_camion(idcamion){
+        operation = "supprimer_un_camion";
+        const parametres = "&idcamion=" + idcamion;
+        
+        xhttp.onload = function(){
+          //alert(this.responseText);
+          if(this.responseText>0){
+            afficher_tous_les_camions();
+          }
+          else{
+            alert("Un souci s'est produit");
+          }
+        }
+        
+        xhttp.open("REQUEST","serveurs/suppression.php?operation=" + operation + parametres);
+        xhttp.send();
+      }
+      /*SUPPRIMER TOUS LES CAMIONS*/
+      function supprimer_tous_les_camions(){
+        operation = "supprimer_tous_les_camions";
+        xhttp.onload = function(){
+          if(this.responseText>0){
+            afficher_tous_les_camions();
+          }
+          else{
+            alert("Un souci s'est produit");
+          }
+        }
+        
+        xhttp.open("REQUEST","serveur_suppression_ligne.php?operation=" + operation);
+        xhttp.send();
+      }
+    </script>
+  </body>
+</html>
