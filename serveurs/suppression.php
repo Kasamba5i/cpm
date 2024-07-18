@@ -1,11 +1,15 @@
 <?php
+    require_once("base_de_donnees.php");
+
     $resultat = "";
     
     /* CODE DE CONNEXION A LA BASE DE DONNEES */
+    /*
     function se_connecter(){
         $conn = mysqli_connect("localhost","root","","db_cpm","3308");
         return $conn;
     }
+    */
 
     /** COMPTER LE NOMBRE DE LIGNES DISPONIBLES */
     function compter_lignes($nom_table){
@@ -97,6 +101,28 @@
 
         return $retour;
     }
+    
+    /***********************/
+    /* UTILISATEUR */
+    /***********************/
+    /* SUPPRIMER UN UTILISATEUR */
+    function supprimer_un_utilisateur(){
+        $retour = 0;
+        
+        $idutilisateur = $_REQUEST["idutilisateur"];
+        $lignes_disponibles = compter_lignes("t_utilisateur");
+        
+        if($lignes_disponibles>1){
+            $sql = "DELETE FROM t_utilisateur WHERE idutilisateur=" . $idutilisateur . "";
+        }
+        elseif($lignes_disponibles==1){
+            $sql = "TRUNCATE TABLE t_utilisateur";
+        }
+        
+        $retour = mysqli_query(se_connecter(), $sql);
+        
+        return $retour;
+    }
 
     if ($_REQUEST["operation"]=="supprimer_un_camion") {
         $resultat = supprimer_un_camion();
@@ -109,6 +135,9 @@
     }
     elseif ($_REQUEST["operation"]=="supprimer_tous_les_checkpoints") {
         $resultat = supprimer_tous_les_checkpoints();
+    }
+    elseif ($_REQUEST["operation"]=="supprimer_un_utilisateur") {
+        $resultat = supprimer_un_utilisateur(se_connecter());
     }
 
     echo $resultat;

@@ -1,12 +1,17 @@
 <?php
+    require_once("base_de_donnees.php");
+    include_once("affichage_date_heure.php");
+
     $resultat = "";
     
     /* CODE DE CONNEXION A LA BASE DE DONNEES */
     /************************/
+    /*
     function se_connecter(){
         $conn = mysqli_connect("localhost","root","","db_cpm","3308");
         return $conn;
     }
+    */
 
     /** */
     function compter_lignes($nom_table){
@@ -78,6 +83,28 @@
         return $retour;
     }
 
+    /************************/
+    /* COURSE */
+    /************************/
+    function ajouter_course(){
+        $retour = 0;
+
+        $idcourse = generer_id_course();
+        $datecourse = $_REQUEST["datecourse"];
+        $typecourse = strtoupper($_REQUEST["typecourse"]);
+        $source = $_REQUEST["source"];
+        $destination = $_REQUEST["destination"];
+        $details = htmlspecialchars($_REQUEST["details"]);
+        $plaque = strtoupper($_REQUEST["plaque"]);
+        $contact = $_REQUEST["contact"];
+
+        $sql = "INSERT INTO t_course (idcourse, datecourse, typecourse, source, destination, details, plaque, contact) VALUES ('".$idcourse."', '".$datecourse."', '".$typecourse."', ".$source.", ".$destination.", '".$details."', '".$plaque."', '".$contact."')";
+        
+        $retour = mysqli_query(se_connecter(), $sql);
+
+        return $retour;
+    }
+
     if ($_REQUEST["operation"]=="ajouter_camion") {
         $resultat = ajouter_camion();
     }
@@ -86,6 +113,9 @@
     }
     elseif ($_REQUEST["operation"]=="ajouter_un_utilisateur") {
         $resultat = ajouter_un_utilisateur();
+    }
+    elseif ($_REQUEST["operation"]=="ajouter_course") {
+        $resultat = ajouter_course();
     }
 
     echo $resultat;

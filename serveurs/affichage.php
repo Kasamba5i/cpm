@@ -1,14 +1,18 @@
 <?php
+    require_once("base_de_donnees.php");
+
     $resultat = "";
 
     /* CODE DE CONNEXION A LA BASE DE DONNEES */
+    /*
     function se_connecter(){
         $conn = mysqli_connect("127.0.0.1","root","","db_cpm","3308");
         return $conn;
     }
+    */
 
     /**************************/
-    /* COMPTER  */
+    /* COMPTER LE NOMBRE DE LIGNES DE LA TABLE SELECTIONNEE */
     /**************************/
     function compter_lignes($bdd, $nom_table){
         $retour = "";
@@ -17,6 +21,24 @@
         
         foreach($rows as $row):
             $retour = $row["nbre"];
+        endforeach;
+
+        return $retour;
+    }
+
+    /* RECUPERER LE TYPE DE COMPTE DE L'UTILISATEUR SELECTIONNE */
+    function recuperer_type_compte($idutilsateur){
+        $retour = "";
+        
+        $rows = mysqli_query(se_connecter(), "SELECT typecompte FROM t_utilisateur WHERE idutilisateur=" . $idutilsateur);
+        
+        foreach($rows as $row):
+            if ($row["typecompte"]=="ADMIN") {
+                $retour = "ADMINISTRATEUR";
+            }
+            else{
+                $retour = "SUPERVISEUR" ;
+            }
         endforeach;
 
         return $retour;
@@ -133,6 +155,82 @@
         return $retour;
     }
 
+    //RECUPERER LE NOM DU CHECKPOINT SELECTIONNE
+    function recuperer_nom_checkpoint($idcheckpoint){
+        $retour = "";
+        
+        $rows = mysqli_query(se_connecter(), "SELECT * FROM t_checkpoint WHERE idcheckpoint=".$idcheckpoint);
+        
+        foreach($rows as $row):
+            $retour = $row["nom"];
+        endforeach;
+
+        return $retour;
+    }
+
+    /**************************/
+    /* UTILISATEUR */
+    /**************************/
+    function afficher_tous_les_utilisateurs($bdd){
+        $retour = "";
+        
+        $rows = mysqli_query($bdd, "SELECT * FROM t_utilisateur");
+        
+        foreach($rows as $row):
+            $idutilisateur = $row["idutilisateur"];
+            $typecompte = recuperer_type_compte($idutilisateur);
+            $lieuaffectation = recuperer_nom_checkpoint($row["idcheckpoint"]);
+
+            $retour = $retour . '<li class="list-group-item d-flex justify-content-between lh-sm">
+              <div>
+                <h6 class="my-0" id="nom">'.$row["nom"].'</h6>
+                <small class="text-muted" id="telephone">'.$row["telephone"].'</small>
+                <br>
+                <small class="text-muted" id="email">'.$row["email"].'</small>
+                <br>
+                <small class="text-muted" id="typecompte">'.$typecompte.'</small>
+                <br>
+                <small class="text-muted" id="checkpoint">Affecté(e) à '.$lieuaffectation.'</small>
+              </div>
+              <span class="text-muted">
+                <img class="d-block mx-auto mb-4 rounded-circle" src="'.$row["photo"].'" alt="" width="57" height="57">
+              </span>
+            </li>';
+        endforeach;
+
+        return $retour;
+    }
+    
+    function filtrer_les_utilisateurs($bdd, $nom){
+        $retour = "";
+        
+        $rows = mysqli_query($bdd, "SELECT * FROM t_utilisateur WHERE nom LIKE '" . $nom . "%' OR nom LIKE '%" . $nom . "%'");
+        
+        foreach($rows as $row):
+            $idutilisateur = $row["idutilisateur"];
+            $typecompte = recuperer_type_compte($idutilisateur);
+            $lieuaffectation = recuperer_nom_checkpoint($row["idcheckpoint"]);
+
+            $retour = $retour . '<li class="list-group-item d-flex justify-content-between lh-sm">
+              <div>
+                <h6 class="my-0" id="nom">'.$row["nom"].'</h6>
+                <small class="text-muted" id="telephone">'.$row["telephone"].'</small>
+                <br>
+                <small class="text-muted" id="email">'.$row["email"].'</small>
+                <br>
+                <small class="text-muted" id="typecompte">'.$typecompte.'</small>
+                <br>
+                <small class="text-muted" id="checkpoint">Affecté(e) à '.$lieuaffectation.'</small>
+              </div>
+              <span class="text-muted">
+                <img class="d-block mx-auto mb-4 rounded-circle" src="'.$row["photo"].'" alt="" width="72" height="57">
+              </span>
+            </li>';
+        endforeach;
+
+        return $retour;
+    }
+
     if ($_REQUEST["operation"]=="afficher_tous_les_camions") {
         $resultat = afficher_tous_les_camions(se_connecter());
     }
@@ -150,6 +248,12 @@
     }
     elseif ($_REQUEST["operation"]=="filtrer_les_checkpoints") {
         $resultat = filtrer_les_checkpoints(se_connecter(), $_REQUEST["nom"]);
+    }
+    elseif ($_REQUEST["operation"]=="afficher_tous_les_utilisateurs") {
+        $resultat = afficher_tous_les_utilisateurs(se_connecter());
+    }
+    elseif ($_REQUEST["operation"]=="filtrer_les_utilisateurs") {
+        $resultat = filtrer_les_utilisateurs(se_connecter(), $_REQUEST["nom"]);
     }
 
     echo $resultat;
