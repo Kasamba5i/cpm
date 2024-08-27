@@ -1,19 +1,19 @@
-/*
-*{
-    font-family: "Audiowide", "Sofia", sans-serif;
-    //fonts à utiliser pour les notes (notifications), avertissements
-}
-*/
-
-#logoKME {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-}
-
-.fondTransport {
-    background-image: url("images/camionsparking.jpg");
-    background-size: contain;
-    width: 100%;
-    height: auto;
+/*
+*{
+    font-family: "Audiowide", "Sofia", sans-serif;
+    //fonts à utiliser pour les notes (notifications), avertissements
+}
+*/
+
+#logoKME {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.fondTransport {
+    background-image: url("images/camionsparking.jpg");
+    background-size: contain;
+    width: 100%;
+    height: auto;
 }

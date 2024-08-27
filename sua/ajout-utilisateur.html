@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script src="../assets/js/color-modes.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Marcel Kasamba Senki">
+    <title>CheckPoint Manager 1.0</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/navbars-offcanvas/">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .b-example-divider {
+            width: 100%;
+            height: 3rem;
+            background-color: rgba(0, 0, 0, .1);
+            border: solid rgba(0, 0, 0, .15);
+            border-width: 1px 0;
+            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+        }
+
+        .b-example-vr {
+            flex-shrink: 0;
+            width: 1.5rem;
+            height: 100vh;
+        }
+
+        .bi {
+            vertical-align: -.125em;
+            fill: currentColor;
+        }
+
+        .nav-scroller {
+            position: relative;
+            z-index: 2;
+            height: 2.75rem;
+            overflow-y: hidden;
+        }
+
+        .nav-scroller .nav {
+            display: flex;
+            flex-wrap: nowrap;
+            padding-bottom: 1rem;
+            margin-top: -1px;
+            overflow-x: auto;
+            text-align: center;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .btn-bd-primary {
+            --bd-violet-bg: #712cf9;
+            --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+            --bs-btn-font-weight: 600;
+            --bs-btn-color: var(--bs-white);
+            --bs-btn-bg: var(--bd-violet-bg);
+            --bs-btn-border-color: var(--bd-violet-bg);
+            --bs-btn-hover-color: var(--bs-white);
+            --bs-btn-hover-bg: #6528e0;
+            --bs-btn-hover-border-color: #6528e0;
+            --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+            --bs-btn-active-color: var(--bs-btn-hover-color);
+            --bs-btn-active-bg: #5a23c8;
+            --bs-btn-active-border-color: #5a23c8;
+        }
+
+        .bd-mode-toggle {
+            z-index: 1500;
+        }
+
+        .bd-mode-toggle .dropdown-menu .active .bi {
+            display: block !important;
+        }
+    </style>
+
+
+    <!-- Custom styles for this template -->
+    <link href="../bootstrap-5.0.2-dist/css/navbars-offcanvas.css" rel="stylesheet">
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="../fontawesome-free-6.5.2-web/css/all.min.css">
+
+    <!-- Custom styles form-validation.css -->
+    <link href="../form-validation.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../styles/monstyle1.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+
+  </head>
+  <body>
+    <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+      <symbol id="check2" viewBox="0 0 16 16">
+      <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+      </symbol>
+      <symbol id="circle-half" viewBox="0 0 16 16">
+      <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+      </symbol>
+      <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+      <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+      <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+      </symbol>
+      <symbol id="sun-fill" viewBox="0 0 16 16">
+      <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+      </symbol>
+  </svg>
+    
+    <main>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" aria-label="Offcanvas navbar large">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#" translate="no">KME - Checkpoint Manager</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasNavbar2" aria-labelledby="offcanvasNavbar2Label">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbar2Label">Menu</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="./">Accueil</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Utilisateur
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="ajout-utilisateur.html">Créer</a></li>
+                                <li><a class="dropdown-item" href="liste-utilisateur.html">Voir</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Checkpoint
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="ajout-checkpoint.html">Créer</a></li>
+                                <li><a class="dropdown-item" href="liste-checkpoint.html">Voir</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Camion
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="ajout-camion.html">Créer</a></li>
+                                <li><a class="dropdown-item" href="liste-camion.html">Voir</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Course
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="ajout-course.html">Créer</a></li>
+                                <li><a class="dropdown-item" href="liste-course.html">Voir</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Màj
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="ajout-maj.html">Ajouter</a></li>
+                                <li><a class="dropdown-item" href="liste-maj">Voir</a></li>
+                                <!--
+                                <li>
+                                <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                -->
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="btn_se_deconnecter">Déconnexion</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+      </nav>
+
+      <div class="container my-5">
+        <div class="py-5 text-center">
+          <!--
+          <img class="d-block mx-auto mb-4" src="logo/logoKME.jpg" alt="" width="144" height="114">
+          <h2>CheckPoint Manager</h2>
+          -->
+          <p class="lead">Ajouter un nouvel utilisateur aux <span class="badge bg-primary rounded-pill" id="nombreutilisateurs"></span> existants</p>
+        </div>
+
+        <div class="row g-5">
+          <div class="col-md-12 col-lg-12">
+            <!--<h4 class="mb-3">Information du nouvel utilisateur</h4>-->
+            <form class="needs-validation" id="form_utilisateur" novalidate enctype="multipart/form-data">
+
+              <h3 class="etiquette">Identité utilisateur</h3>
+
+              <div class="row g-3">
+                <div class="col-sm-12">
+                  <div class="input-group">
+                    <span class="input-group-text">Nom complet</span>
+                  <input type="text" class="form-control" id="txtnomutilisateur" placeholder="KASAMBA LOMA JOEL" value="" required>
+                  </div>
+                  <div class="invalid-feedback">
+                    Saisir un nom complet valide.
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="input-group">
+                    <span class="input-group-text">Adresse email</span>
+                  <input type="email" class="form-control" id="txtemailutilisateur" placeholder="marcelkasamba@gmail.com" required>
+                  </div>
+                  <div class="invalid-feedback">
+                    Saisir une adresse mail valide.
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="input-group">
+                    <span class="input-group-text">Téléphone</span>
+                    <input type="tel" class="form-control" id="txtcontactutilisateur" placeholder="+243 000 000 000" required>
+                  </div>
+                  <div class="invalid-feedback">
+                    Saisir un numéro de téléphone valide.
+                  </div>
+                </div>
+                
+                <div class="col-12">
+                  <div class="input-group">
+                    <span class="input-group-text">Affecté à </span>
+                    <select class="form-select" id="l_checkpoint" onfocus="lister_les_checkpoints();" required></select>
+                  </div>
+                  <div class="invalid-feedback">
+                    Selectionner un checkpoint valide.
+                  </div>
+                </div>
+                
+              <div class="col-12">
+                <div class="input-group">
+                  <input type="file" class="form-control" id="f_photo" name="f_photo" accept="image/*">
+                </div>
+              </div>
+                
+              <h3 class="etiquette">Compte utilisateur</h3>
+
+              <div class="col-12">
+                <div class="input-group">
+                  <span class="input-group-text">Type de compte </span>
+                  <select class="form-select" id="type_de_compte" required>
+                    <option value="sua">SUPER ADMINISTRATEUR</option>
+                    <option value="adm">ADMINISTRATEUR</option>
+                    <option value="sup">SUPERVISEUR</option>
+                  </select>
+                </div>
+                <div class="invalid-feedback">
+                  Selectionner un checkpoint valide.
+                </div>
+              </div>
+              
+              <div class="col-sm-12">
+                <div class="input-group">
+                  <span class="input-group-text">Mot de passe</span>
+                  <input type="text" class="form-control" id="txtmdputilisateur1" placeholder="********" value="" required>
+                </div>
+                <div class="invalid-feedback">
+                  Saisir un mot de passe valide.
+                </div>
+              </div>
+
+              <div class="col-sm-12">
+                <div class="input-group">
+                  <span class="input-group-text">Confirmer le mot de passe</span>
+                  <input type="text" class="form-control" id="txtmdputilisateur2" placeholder="********" value="" required>
+                </div>
+                <div class="invalid-feedback">
+                  Saisir un mot de passe valide.
+                </div>
+              </div>
+
+              </div>
+
+              <hr class="my-4">
+              <div class="d-grid gap-2 col-6 mx-auto">
+                <button class="w-100 btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="ajouter_un_utilisateur();" type="button">Enregistrer</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Nouvel utilisateur</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="message-retour"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="my-5 text-muted text-center text-small">
+      <p class="mb-1" translate="no">&copy; CheckPoint Manager 2024</p>
+      <ul class="list-inline">
+        <li class="list-inline-item"><a href="https://github.com/Kasamba5i">Developpeur</a></li>
+      </ul>
+    </footer>
+    
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../styles/offcanvas.js"></script>
+    <script src="../form-validation.js"></script>
+    <script type="text/javascript">
+      let operation = "";
+      const xhttp = new XMLHttpRequest();
+
+      /* RAZ CHAMPS */
+      function raz_champs(){
+        document.getElementById("txtnomutilisateur").value = "";
+        document.getElementById("txtemailutilisateur").value = "";
+        document.getElementById("txtcontactutilisateur").value = "";
+        document.getElementById("type_de_compte").value = "";
+        document.getElementById("txtmdputilisateur1").value = "";
+        document.getElementById("txtmdputilisateur2").value = "";
+      }
+
+      /*LISTER LES CHECKPOINTS*/
+      function lister_les_checkpoints(){
+        operation = "lister_les_checkpoints";
+        
+        xhttp.onload = function(){
+          //alert(this.responseText);
+          document.getElementById("l_checkpoint").innerHTML = this.responseText;
+        }
+
+        xhttp.open("GET","../serveurs/affichage_checkpoint.php?operation=" + operation);
+        xhttp.send();
+      }
+      
+      /*COMPTER LE NOMBRE TOTAL D'UTILISATEURS*/
+      function compter_utilisateurs(){
+        operation = "compter_utilisateurs";
+        
+        xhttp.onload = function(){
+          document.getElementById("nombreutilisateurs").innerHTML = this.responseText;
+        }
+
+        xhttp.open("GET","../serveurs/affichage_utilisateur.php?operation=" + operation);
+        xhttp.send();
+      }
+      
+      /* INSERTION */
+      /*AJOUTER UN UTILISATEUR*/
+      function ajouter_un_utilisateur(){
+        const nom = document.getElementById("txtnomutilisateur").value;
+        const email = document.getElementById("txtemailutilisateur").value;
+        const contact = document.getElementById("txtcontactutilisateur").value;
+        const idcheckpoint = document.getElementById("l_checkpoint").value;
+        var photo = new FormData(document.getElementById("form_utilisateur"));
+        const type_de_compte = document.getElementById("type_de_compte").value;
+
+        //test//
+
+        if (document.getElementById("txtmdputilisateur1").value==document.getElementById("txtmdputilisateur2").value) {
+          const motdepasse = document.getElementById("txtmdputilisateur1").value;
+
+          /*SAUVEGARDE PHYSIQUE DE LA PHOTO*/
+          fetch("../serveurs/upload_photo.php", { method: "POST", body: photo })
+          .then(res => res.text())
+          .then(txt => {
+            if(txt.split(':')[0]==1){
+              const parametres = "&nom=" + nom + "&email=" + email + "&contact=" + contact + "&idcheckpoint=" + idcheckpoint + "&cheminphoto=" + txt.split(':')[1] + "&type_de_compte=" + type_de_compte + "&motdepasse=" + motdepasse;
+              operation = "ajouter_un_utilisateur";
+              //alert(parametres);
+              xhttp.onload = function(){
+                //alert(this.responseText);
+                
+                if(this.responseText>0){
+                  //alert("OKKKK");
+                  raz_champs();
+                  compter_utilisateurs();
+                  document.getElementById("message-retour").innerHTML = "Nouvel utilisateur ajouté avec succès !";
+                }
+                else{
+                    document.getElementById("message-retour").innerHTML = "Echec ajout nouvel utilisateur !";
+                }
+              }
+              xhttp.open("GET","../serveurs/insertion.php?operation=" + operation + parametres);
+              xhttp.send();
+            }
+            else{
+              alert("La photo de l'utilisateur n'a pas été sauvegardée !");
+            }
+          })
+          .catch(err => console.error(err));
+        } else {}
+      }
+      
+        /*DECONNEXION*/
+        document.getElementById("btn_se_deconnecter").onclick = function(){
+            window.location.replace('../');
+        }
+
+      window.onload = function(){
+        lister_les_checkpoints();
+        compter_utilisateurs();
+      }
+    </script>
+  </body>
+</html>
